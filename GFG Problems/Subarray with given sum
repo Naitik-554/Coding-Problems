@@ -1,0 +1,13 @@
+int l=0,r=0,sum=0;
+while(l<n)
+{
+    if(sum==s)
+    return {l+1,r};
+
+    if(sum>s)
+    sum-=arr[l++];
+
+    if(sum<s)
+    sum+=arr[r++];
+}
+return {-1};
