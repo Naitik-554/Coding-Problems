@@ -1,0 +1,45 @@
+class Solution{
+    public:
+    /*You are required to complete this method*/
+     int max_path_sum(int a[], int b[], int n, int m)
+    {
+        int i=0, j=0, ans=0, sum1=0, sum2=0;
+        
+        while(i<n and j<m) {
+            
+            while(a[i] < b[j] and i<n) {
+                sum1 += a[i++];
+            }
+            
+            if(i == n) break;
+            
+            while(b[j] < a[i] and j<m) {
+                sum2 += b[j++];
+            }
+            
+            if(j == m) break;
+            
+            if(a[i] == b[j]) {
+                sum1 += a[i];
+                sum2 += b[j];
+                
+                ans += max(sum1,sum2);
+                
+                sum1 = sum2 = 0;
+                i++, j++;
+            }
+        }
+        
+        while(i<n) {
+            sum1 += a[i++];
+        }
+        
+        while(j<m) {
+            sum2 += b[j++];
+        }
+        
+        ans += max(sum1, sum2);
+        return ans;
+        
+    }
+};
